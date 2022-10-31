@@ -1,0 +1,39 @@
+#iniciar servidor
+mogosh
+
+#mostrar todas las bases
+show dbs
+
+#usar una base de datos (en este ejemplo ecommerce)
+use ecommerce
+
+#mostrar todas las colecciones
+
+show collections
+
+#mostrar todos los documentos de una colección (en este ejemplo productos)
+db.productos.find()
+
+#mostrar las cantidad de documento de la colecciones
+
+db.productos.countDocuments()
+
+db.mensajes.countDocuments()
+
+#metodo CRUD :
+
+- Create:
+a) db.productos.insertOne({
+    nombreProducto: 'Halo Infinite',
+    imagen: 'https://www.somosxbox.com/wp-content/uploads/2020/07/portada-oficial-de-Halo-Infinite.jpg',
+    lanzamiento: '15 de Noviembre del 2001',
+    plataformas: 'Xbox Series X|S, Xbox One, Microsoft Windows, Project xCloud',
+    ordenConologico: 2560,
+    precio: 2586
+  })
+
+- Read:
+b) 
+-db.productos.find({ nombreProducto: 'Halo Infinite' })
+-db.productos.find({$or:[{"precio":1000},{"precio":3000}]})
+-db.productos.find({ precio: { $gt: 3000 } }) // mayor que 2000

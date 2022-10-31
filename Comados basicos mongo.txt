@@ -1,0 +1,76 @@
+mogosh -- inicia servidor de mongo
+
+show dbs -- muestra las bases de datos
+
+use <nombre> -- usa una base de datos}
+
+user <nombre> -- si la base no existe la crea
+
+db -- muestra la base de datos actual
+
+show collections -- muestra las colecciones de la base de datos actual
+
+db.<nombre>.insert({<campo>:<valor>}) -- inserta un documento en la colección <nombre> de la base de datos actual
+ejemplo db.productosdehalo.insert({nombre:"halo 5",precio:60}) -- inserta un documento en la colección productosdehalo de la base de datos actual
+
+db.<nombre>.insertMany([{},{},{}])
+ejemplo db.productosdehalo.insertMany([{nombre:"halo 5",precio:60},{nombre:"halo 4",precio:50},{nombre:"halo 3",precio:40}]) -- inserta varios documentos en la colección productosdehalo de la base de datos actual
+
+db.<nombre>.find() -- muestra los documentos de la colección <nombre> de la base de datos actual
+ejemplo db.productosdehalo.find() -- muestra los documentos de la colección productosdehalo de la base de datos actual
+
+db.<nombre>.find({<campo>:<valor>}) -- muestra los documentos de la colección <nombre> de la base de datos actual que tengan el campo <campo> con el valor <valor>
+ejemplo db.productosdehalo.find({nombre:"halo 5"}) -- muestra los documentos de la colección productosdehalo de la base de datos actual que tengan el campo nombre con el valor halo 5
+
+
+#controladores
+db.coll.estimateDocumentCount()
+db.coll.countDocuments()
+
+#CRUD
+
+#Crear (C)(create)
+
+db.coll.insertOne({})
+db.coll.insertMany([{},{}])
+
+#leer (r)(read)
+
+db.coll.findOne()
+db.coll.find()
+#actualizar
+db.coll.updateOne({},{$set:{}})
+db.coll.updateMany({},{$set:{}})
+
+#borrar (d)(delete)
+
+db.coll.deleteOne({})
+db.coll.deleteMany({})
+db.coll.drop()
+
+#filtros
+db.coll.find({
+    clave:{
+        $operador:valor
+    }
+})
+
+#operadores
+
+$and realiza operaciones AND -> sintaxis:{$and:[{},{},{}]} -> devuelve todos los documentos que cumplan con todas las condiciones
+
+$or realiza operaciones OR -> sintaxis:{$or:[{},{},{}]} -> devuelve todos los documentos que cumplan con al menos una de las condiciones
+
+$it coincide con valores que son menores que un valor especificado -> sintaxis:{$lt:valor} -> devuelve todos los documentos que cumplan con la condición
+
+$lte coincide con valores que son menores o iguales que un valor especificado -> sintaxis:{$lte:valor} -> devuelve todos los documentos que cumplan con la condición
+
+$gt coincide con valores que son mayores que un valor especificado -> sintaxis:{$gt:valor} -> devuelve todos los documentos que cumplan con la condición
+
+$gte coincide con valores que son mayores o iguales que un valor especificado -> sintaxis:{$gte:valor} -> devuelve todos los documentos que cumplan con la condición
+
+$ne coincide con todos los valores que no son iguales a un valor especificado -> sintaxis:{$ne:valor} -> devuelve todos los documentos que cumplan con la condición
+
+$eq Selecciona los documentos que son iguales a un valor especificado -> sintaxis:{$eq:valor} -> devuelve todos los documentos que cumplan con la condición
+
+
